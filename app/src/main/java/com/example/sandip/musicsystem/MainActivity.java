@@ -1,7 +1,11 @@
 package com.example.sandip.musicsystem;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,6 +20,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.cleveroad.audiowidget.AudioWidget;
+
+import static android.R.attr.data;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -116,6 +122,17 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        audioWidget.show(100, 100); // coordinates in pixels on screen from top left corner
+        //audioWidget.hide();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
+        }
+
+
+
+
 
 
 
@@ -128,6 +145,15 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == OVERLAY_PERMISSION_REQ_CODE) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && Settings.canDrawOverlays(this)) {
+                // now you can show audio widget
+            }
         }
     }
 
