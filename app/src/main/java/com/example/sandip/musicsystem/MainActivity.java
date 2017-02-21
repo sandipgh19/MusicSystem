@@ -1,6 +1,8 @@
 package com.example.sandip.musicsystem;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -13,8 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.cleveroad.audiowidget.AudioWidget;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Context context;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,77 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        AudioWidget audioWidget = new AudioWidget.Builder(context).build();
+
+        audioWidget.controller().onControlsClickListener(new AudioWidget.OnControlsClickListener() {
+                                                             @Override
+                                                             public boolean onPlaylistClicked() {
+                                                                 return false;
+                                                             }
+
+                                                             @Override
+                                                             public void onPreviousClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public boolean onPlayPauseClicked() {
+                                                                 return false;
+                                                             }
+
+                                                             @Override
+                                                             public void onNextClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public void onAlbumClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public void onPlaylistLongClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public void onPreviousLongClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public void onPlayPauseLongClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public void onNextLongClicked() {
+
+                                                             }
+
+                                                             @Override
+                                                             public void onAlbumLongClicked() {
+
+
+                                                             }
+        });
+
+        audioWidget.controller().onWidgetStateChangedListener(new AudioWidget.OnWidgetStateChangedListener() {
+            @Override
+            public void onWidgetStateChanged(@NonNull AudioWidget.State state) {
+                // widget state changed (COLLAPSED, EXPANDED, REMOVED)
+            }
+
+            @Override
+            public void onWidgetPositionChanged(int cx, int cy) {
+                // widget position change. Save coordinates here to reuse them next time AudioWidget.show(int, int) called.
+            }
+        });
+
+
+
+
     }
 
     @Override
