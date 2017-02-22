@@ -41,10 +41,8 @@ import butterknife.ButterKnife;
 
 import static android.R.attr.data;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<Collection<MusicItem>>,
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Collection<MusicItem>>,
         SearchView.OnQueryTextListener {
-
     private static final int MUSIC_LOADER_ID = 1;
     private static final int OVERLAY_PERMISSION_REQ_CODE = 1;
     private static final int EXT_STORAGE_PERMISSION_REQ_CODE = 2;
@@ -83,7 +81,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+       // navigationView.setNavigationItemSelectedListener(this);
 
         ButterKnife.bind(this);
         adapter = new MusicAdapter(this);
@@ -222,7 +220,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main1, menu);
         MenuItem searchItem = menu.findItem(R.id.item_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(this);
@@ -289,7 +287,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    @Override
+  /*  @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -344,5 +342,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-}
+    }*/
+

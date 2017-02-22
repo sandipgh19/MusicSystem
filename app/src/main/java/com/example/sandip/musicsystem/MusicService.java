@@ -20,7 +20,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.cleveroad.audiowidget.AudioWidget;
+import com.example.sandip.audiowidget.*;
+import com.example.sandip.audiowidget.AudioWidget;
 
 import java.io.IOException;
 import java.util.ArrayList;
