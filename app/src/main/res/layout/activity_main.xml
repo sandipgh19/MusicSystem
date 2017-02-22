@@ -21,13 +21,10 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
-    <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.cleveroad.audiowidget.example.MainActivity">
+        tools:context="com.example.sandip.musicsystem.MainActivity">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
@@ -47,5 +44,5 @@
             />
 
     </FrameLayout>
-
 </android.support.v4.widget.DrawerLayout>
+
